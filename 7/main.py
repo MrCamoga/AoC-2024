@@ -1,6 +1,3 @@
-from itertools import product
-from functools import reduce
-
 def readfile():
     with open("input.txt","r") as file:
         return [(s[0][:-1],*s[1:]) for line in file if (s:=line.split())]
