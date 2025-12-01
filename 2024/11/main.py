@@ -22,7 +22,7 @@ def fast(data,m):
     return sum(h.values())
 
 def oneline(data,m):
-    return (lambda f,v,i,m: f(f,v,i,m))(lambda f,v,i,m: sum(v.values()) if i==m else f(f,reduce(lambda d,x: dict(list(d.items())+[(x[0],d.get(x[0],0)+x[1])]), sum([[("1",c)] if x=="0" else [(str(2024*int(x)),c)] if len(x)&1 else [(str(int(x[:len(x)//2])),c),(str(int(x[len(x)//2:])),c)] for x,c in v.items()],[]), {}),i+1,m), {x:data.count(x) for x in data}, 0, m)
+    return (lambda f,v,i: f(f,v,i))(lambda f,v,i: sum(v.values()) if i==0 else f(f,reduce(lambda d,x: dict(list(d.items())+[(x[0],d.get(x[0],0)+x[1])]), sum([[("1",c)] if x=="0" else [(str(2024*int(x)),c)] if len(x)&1 else [(str(int(x[:len(x)//2])),c),(str(int(x[len(x)//2:])),c)] for x,c in v.items()],[]), {}),i-1), {x:data.count(x) for x in data}, m)
     
 if __name__  == "__main__":
     data = readfile()
